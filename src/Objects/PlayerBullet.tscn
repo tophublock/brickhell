@@ -7,6 +7,7 @@
 extents = Vector2( 7.47047, 19.3527 )
 
 [node name="PlayerBullet" type="Area2D"]
+scale = Vector2( 0.75, 0.75 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -18,3 +19,4 @@ shape = SubResource( 1 )
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 position = Vector2( 0.0765609, 0.289281 )
 scale = Vector2( 0.628825, 1.85069 )
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="OnVisibilityNotifier2DScreenExited"]

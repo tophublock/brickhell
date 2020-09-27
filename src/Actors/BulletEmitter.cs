@@ -15,7 +15,7 @@ public class BulletEmitter : Node2D
         Rotate((float)1 * delta);
     }
 
-    private void spawnBullet()
+    private void shoot()
     {
         // TODO: Fix bullet distance from enemy center
         Area2D enemy = (Area2D)GetParent();
@@ -30,6 +30,6 @@ public class BulletEmitter : Node2D
 
     public void OnBulletTimerTimeout()
     {
-        spawnBullet();
+        shoot();
     }
 }
