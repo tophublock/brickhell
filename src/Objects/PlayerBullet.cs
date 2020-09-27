@@ -15,4 +15,9 @@ public class PlayerBullet : Area2D
         Vector2 velocity = new Vector2(0, _speed * delta);
         this.Position += velocity;
     }
+
+    public void OnVisibilityNotifier2DScreenExited()
+    {
+        QueueFree();
+    }
 }
