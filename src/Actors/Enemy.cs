@@ -20,6 +20,7 @@ public class Enemy : Area2D
             x: start.x,
             y: rand.Next(30, 30 + (int)screenSize.y / 4)
         );
+        this.Position = start;
 
         var MoveTween = GetNode<Tween>("MoveTween");
         MoveTween.InterpolateProperty(this, "position", start, target, (float)0.5, Tween.TransitionType.Linear, Tween.EaseType.Out);
