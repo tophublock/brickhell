@@ -4,7 +4,7 @@ using System;
 public class Enemy : Area2D
 {
 
-    private int _speed = 200;
+    private int _speed = 50;
     private Vector2 _direction =  new Vector2(0, 1);
     public override void _Ready()
     {

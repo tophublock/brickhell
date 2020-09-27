@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/enemy1.png" type="Texture" id=1]
 [ext_resource path="res://src/Actors/Enemy.cs" type="Script" id=2]
 [ext_resource path="res://src/Actors/BulletEmitter.cs" type="Script" id=3]
-[ext_resource path="res://assets/enemy5.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
@@ -25,7 +24,4 @@ scale = Vector2( 3.2, 3.2 )
 [node name="BulletEmitter" type="Node2D" parent="."]
 scale = Vector2( 0.5, 1.5 )
 script = ExtResource( 3 )
-
-[node name="Sprite" type="Sprite" parent="BulletEmitter"]
-texture = ExtResource( 4 )
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="OnVisibilityNotifier2DScreenExited"]

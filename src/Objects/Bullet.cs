@@ -11,8 +11,8 @@ public class Bullet : Area2D
 
     public override void _Process(float delta)
     {
-        Vector2 velocity = new Vector2(_speed * delta, _speed * delta).Rotated(Rotation);
-        Position += velocity;
+        Vector2 velocity = new Vector2(_speed * delta, _speed * delta).Rotated(this.Rotation);
+        this.Position += velocity;
     }
 
     public void OnVisibilityNotifier2DScreenExited()
