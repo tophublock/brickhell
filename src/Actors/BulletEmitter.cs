@@ -12,7 +12,7 @@ public class BulletEmitter : Node2D
 
     public override void _Process(float delta)
     {
-        Rotate((float)0.25);
+        Rotate((float)1 * delta);
     }
 
     private void spawnBullet()

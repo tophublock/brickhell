@@ -26,7 +26,9 @@ scale = Vector2( 0.5, 1.5 )
 script = ExtResource( 3 )
 
 [node name="BulletTimer" type="Timer" parent="BulletEmitter"]
-wait_time = 0.1
+wait_time = 0.25
 autostart = true
+
+[node name="MoveTween" type="Tween" parent="."]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="OnVisibilityNotifier2DScreenExited"]
 [connection signal="timeout" from="BulletEmitter/BulletTimer" to="BulletEmitter" method="OnBulletTimerTimeout"]

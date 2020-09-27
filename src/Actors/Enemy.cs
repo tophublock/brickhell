@@ -11,10 +11,19 @@ public class Enemy : Area2D
         Vector2 screenSize = GetViewport().Size;
         var rand = new Random();
         // Set x to random coordinate from [0, screenSize.x]
-        Position = new Vector2(
+        // Set y to random coordinate in top 1/6th of screen
+       Vector2 start = new Vector2(
             x: rand.Next(0, (int)screenSize.x + 1),
             y: 0
         );
+        Vector2 target = new Vector2(
+            x: start.x,
+            y: rand.Next(30, 30 + (int)screenSize.y / 4)
+        );
+
+        var MoveTween = GetNode<Tween>("MoveTween");
+        MoveTween.InterpolateProperty(this, "position", start, target, (float)0.5, Tween.TransitionType.Linear, Tween.EaseType.Out);
+        MoveTween.Start();
     }
 
     // Enemy moves down the screen
