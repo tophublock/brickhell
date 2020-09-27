@@ -4,9 +4,8 @@ using System;
 public class Player : Area2D 
 {
 
-    private int SPEED = 450;
-    private int PADDING = 30;
-    private Vector2 _normal = new Vector2(0, -1);
+    private int _speed = 450;
+    private int _padding = 30;
     private Vector2 _screenSize;
 
     public override void _Ready()
@@ -21,28 +20,28 @@ public class Player : Area2D
         // Check up/down movement
         if (Input.IsKeyPressed((int)KeyList.W))
         {
-            velocity.y -= SPEED * delta;
+            velocity.y -= _speed * delta;
         }
         else if (Input.IsKeyPressed((int)KeyList.S))
         {
-            velocity.y += SPEED * delta;
+            velocity.y += _speed * delta;
         }
 
         // Check left/right movement
         if (Input.IsKeyPressed((int)KeyList.A))
         {
-            velocity.x -= SPEED * delta;
+            velocity.x -= _speed * delta;
         }
         else if (Input.IsKeyPressed((int)KeyList.D))
         {
-            velocity.x += SPEED * delta;
+            velocity.x += _speed * delta;
         }
 
         Vector2 position = Position;
         position += velocity;
         Position = new Vector2(
-            x: Mathf.Clamp(position.x, PADDING, _screenSize.x - PADDING),
-            y: Mathf.Clamp(position.y, PADDING, _screenSize.y - PADDING)
+            x: Mathf.Clamp(position.x, _padding, _screenSize.x - _padding),
+            y: Mathf.Clamp(position.y, _padding, _screenSize.y - _padding)
         );
     }
 
