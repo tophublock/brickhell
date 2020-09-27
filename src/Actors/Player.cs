@@ -45,4 +45,12 @@ public class Player : Area2D
             y: Mathf.Clamp(position.y, PADDING, _screenSize.y - PADDING)
         );
     }
+
+    public void OnPlayerAreaEntered(Area2D area)
+    {
+        if (area is Bullet b)
+        {
+            Console.WriteLine("hit!");
+        }
+    }
 }

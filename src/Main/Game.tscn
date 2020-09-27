@@ -12,3 +12,4 @@ autostart = true
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="OnEnemySpawnTimerTimeout"]
+[connection signal="area_entered" from="Player" to="Player" method="OnPlayerAreaEntered"]
