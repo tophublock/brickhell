@@ -54,6 +54,7 @@ public class Player : Area2D
         {
             Console.WriteLine("hit!");
             _health--;
+            b.QueueFree();
 
             if (_health == 0)
             {
