@@ -8,6 +8,7 @@
 extents = Vector2( 32, 32 )
 
 [node name="Enemy" type="Area2D"]
+scale = Vector2( 0.75, 0.75 )
 collision_mask = 2147483648
 script = ExtResource( 2 )
 
@@ -26,7 +27,7 @@ scale = Vector2( 0.5, 1.5 )
 script = ExtResource( 3 )
 
 [node name="BulletTimer" type="Timer" parent="BulletEmitter"]
-wait_time = 0.25
+wait_time = 0.4
 autostart = true
 
 [node name="MoveTween" type="Tween" parent="."]

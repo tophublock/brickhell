@@ -18,7 +18,7 @@ public class Enemy : Area2D
         );
         Vector2 target = new Vector2(
             x: start.x,
-            y: rand.Next(30, 30 + (int)screenSize.y / 4)
+            y: rand.Next(30, 30 + (int)screenSize.y / 6)
         );
         this.Position = start;
 
