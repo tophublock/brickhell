@@ -4,8 +4,10 @@ using System;
 public class Enemy : Area2D
 {
 
+    private int _health = 2;
     private int _speed = 50;
     private Vector2 _direction =  new Vector2(0, 1);
+
     public override void _Ready()
     {
         Vector2 screenSize = GetViewport().Size;

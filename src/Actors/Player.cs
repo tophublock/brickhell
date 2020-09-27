@@ -4,6 +4,7 @@ using System;
 public class Player : Area2D 
 {
 
+    private int _health = 5;
     private int _speed = 450;
     private int _padding = 30;
     private Vector2 _screenSize;
@@ -47,9 +48,17 @@ public class Player : Area2D
 
     public void OnPlayerAreaEntered(Area2D area)
     {
+        // TODO: delete bullet on hit
+        // TODO: end game on player health = 0
         if (area is Bullet b)
         {
             Console.WriteLine("hit!");
+            _health--;
+
+            if (_health == 0)
+            {
+                Console.WriteLine("player is dead!");
+            }
         }
     }
 }
