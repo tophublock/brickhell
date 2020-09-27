@@ -12,8 +12,12 @@ public class BulletEmitter : Node2D
 
     public override void _Process(float delta)
     {
+        Rotate((float)0.25);
+    }
+
+    private void spawnBullet()
+    {
         // TODO: Fix bullet distance from enemy center
-        Rotate((float)0.1);
         Area2D enemy = (Area2D)GetParent();
         Vector2 enemyPosition = enemy.Position;
 
@@ -22,5 +26,10 @@ public class BulletEmitter : Node2D
         b.Rotation = this.Rotation;
         // Make bullets part of the game environment
         enemy.GetParent().AddChild(b);
+    }
+
+    public void OnBulletTimerTimeout()
+    {
+        spawnBullet();
     }
 }
