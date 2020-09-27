@@ -14,7 +14,7 @@ public class Enemy : Area2D
         // Set y to random coordinate in top 1/6th of screen
        Vector2 start = new Vector2(
             x: rand.Next(0, (int)screenSize.x + 1),
-            y: 0
+            y: -50
         );
         Vector2 target = new Vector2(
             x: start.x,

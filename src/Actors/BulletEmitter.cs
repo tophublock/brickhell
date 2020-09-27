@@ -3,7 +3,7 @@ using System;
 
 public class BulletEmitter : Node2D
 {
-    PackedScene _bulletScene;
+    private PackedScene _bulletScene;
 
     public override void _Ready()
     {
