@@ -20,3 +20,12 @@ Coming soon
 - Collision layers and masks
 - Better understanding of creating UIs with Control Nodes
 - Project structure and organization
+
+## Credit
+
+The assets used in this game came from free/open-sourced resources. Credit isn't required but I'd like to thank the creators for their kindness and efforts, as well as share where other developers can find resources for their own games. :)
+
+The image assets used in the game (spaceships, bricks, etc) are from [Kenney](https://kenney.nl/).
+The font assets used in the game are from [Google](https://fonts.google.com/about).
+
+And of course, the [Godot](https://godotengine.org/) engine is also open-sourced.
