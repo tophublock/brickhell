@@ -56,38 +56,39 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LeftCenterContainer" type="CenterContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_left = 0.5
 anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
+margin_left = -195.0
 margin_top = -40.0
-margin_right = 256.0
+margin_right = 195.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="YesButton" type="Button" parent="LeftCenterContainer"]
-margin_left = 96.0
-margin_top = 1.0
-margin_right = 159.0
-margin_bottom = 39.0
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+margin_right = 390.0
+margin_bottom = 40.0
+custom_constants/vseparation = 0
+custom_constants/hseparation = 225
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="YesButton" type="Button" parent="MarginContainer/GridContainer"]
+margin_right = 70.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 70, 40 )
 custom_fonts/font = SubResource( 3 )
 text = "Yes"
 
-[node name="RightCenterContainer" type="CenterContainer" parent="."]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -256.0
-margin_top = -40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="NoButton" type="Button" parent="RightCenterContainer"]
-margin_left = 105.0
-margin_top = 1.0
-margin_right = 151.0
-margin_bottom = 39.0
+[node name="NoButton" type="Button" parent="MarginContainer/GridContainer"]
+margin_left = 295.0
+margin_right = 365.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 70, 0 )
 custom_fonts/font = SubResource( 3 )
 text = "No"
