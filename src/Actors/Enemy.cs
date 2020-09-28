@@ -52,7 +52,6 @@ public class Enemy : Area2D
         {
             _health -= 1;
             bullet.QueueFree();
-            Console.WriteLine("enemy hit");
 
             if (_health == 0)
             {
