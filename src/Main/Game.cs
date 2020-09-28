@@ -29,6 +29,20 @@ public class Game : Node
 
     public void OnPlayerDeath()
     {
-        Console.WriteLine("game over!");
+        // Show GameOver UI
+        var gameOverScene = ResourceLoader.Load("res://src/UserInterface/GameOver.tscn") as PackedScene;
+        var gameOverUI = gameOverScene.Instance() as Node;
+        AddChild(gameOverUI);
+
+        // Remove all enemies from screen
+        var enemies = GetTree().GetNodesInGroup("Enemy");
+        foreach (Enemy enemy in enemies)
+        {
+            enemy.QueueFree();
+        }
+
+        // Stop spawning enemies
+        var timer = GetNode<Timer>("EnemySpawnTimer");
+        timer.Stop();
     }
 }
