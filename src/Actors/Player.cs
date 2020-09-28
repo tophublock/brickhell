@@ -8,7 +8,7 @@ public class Player : Area2D
     private int _speed = 450;
     private int _padding = 30;
     private double _shootCountdownSec = 0.0;
-    private double _shootDelaySec = 0.5;
+    private double _shootDelaySec = 1.0;
     private Vector2 _size;
     private Vector2 _screenSize;
     private PackedScene _bulletScene;
@@ -48,7 +48,7 @@ public class Player : Area2D
         // Check if Player can shoot and is pressing space
         if (_shootCountdownSec <= 0.0 && Input.IsKeyPressed((int)KeyList.Space))
         {
-            shoot();
+            Shoot();
             _shootCountdownSec = _shootDelaySec;
         }
 
@@ -61,7 +61,7 @@ public class Player : Area2D
         _shootCountdownSec -= delta;
     }
 
-    private void shoot()
+    private void Shoot()
     {
         PlayerBullet b = _bulletScene.Instance() as PlayerBullet;
         int bulletPadding = 10;
@@ -78,11 +78,11 @@ public class Player : Area2D
     {
         // TODO: delete bullet on hit
         // TODO: end game on player health = 0
-        if (area is Bullet b)
+        if (area is Bullet bullet)
         {
             Console.WriteLine("hit!");
             _health--;
-            b.QueueFree();
+            bullet.QueueFree();
 
             if (_health == 0)
             {

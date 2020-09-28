@@ -45,4 +45,19 @@ public class Enemy : Area2D
     {
         QueueFree();
     }
+
+    public void OnEnemyAreaEntered(Area2D area)
+    {
+        if (area is PlayerBullet bullet)
+        {
+            _health -= 1;
+            bullet.QueueFree();
+            Console.WriteLine("enemy hit");
+
+            if (_health == 0)
+            {
+                QueueFree();
+            }
+        }
+    }
 }
