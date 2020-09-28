@@ -11,14 +11,21 @@ public class Game : Node
     {
         _enemyScene = ResourceLoader.Load("res://src/Actors/Enemy.tscn") as PackedScene;
         _player = GetNode<Player>("Player");
-
-        var startPosition = GetNode<Position2D>("PlayerStartPosition");
-        _player.Position = startPosition.Position;
+        Start();
     }
 
     public override void _Process(float delta)
     {
 
+    }
+
+    private void Start()
+    {
+        var startPosition = GetNode<Position2D>("PlayerStartPosition");
+        _player.Position = startPosition.Position;
+
+        var timer = GetNode<Timer>("EnemySpawnTimer");
+        timer.Start();
     }
 
     public void OnEnemySpawnTimerTimeout()
@@ -31,8 +38,12 @@ public class Game : Node
     {
         // Show GameOver UI
         var gameOverScene = ResourceLoader.Load("res://src/UserInterface/GameOver.tscn") as PackedScene;
-        var gameOverUI = gameOverScene.Instance() as Node;
-        AddChild(gameOverUI);
+        var gameOverNode = gameOverScene.Instance() as Node;
+        AddChild(gameOverNode);
+
+        // Connect signals to NewGame and EndGame
+        gameOverNode.Connect("NewGame", this, "OnGameOverNewGame");
+        gameOverNode.Connect("EndGame", this, "OnGameOverEndGame");
 
         // Remove all enemies from screen
         var enemies = GetTree().GetNodesInGroup("Enemy");
@@ -44,5 +55,15 @@ public class Game : Node
         // Stop spawning enemies
         var timer = GetNode<Timer>("EnemySpawnTimer");
         timer.Stop();
+    }
+
+    public void OnGameOverNewGame()
+    {
+        Start();
+    }
+
+    public void OnGameOverEndGame()
+    {
+        GetTree().Quit();
     }
 }

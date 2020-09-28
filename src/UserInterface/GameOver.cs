@@ -21,10 +21,12 @@ public class GameOver : NinePatchRect
     public void OnYesButtonPressed()
     {
         EmitSignal(nameof(NewGame));
+        Hide();
     }
 
     public void OnNoButtonPressed()
     {
         EmitSignal(nameof(EndGame));
+        Hide();
     }
 }
