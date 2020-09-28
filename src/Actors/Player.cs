@@ -4,6 +4,8 @@ using System;
 public class Player : Area2D 
 {
 
+    [Signal]
+    public delegate void Death();
     private int _health = 5;
     private int _speed = 450;
     private int _padding = 30;
@@ -80,13 +82,12 @@ public class Player : Area2D
         // TODO: end game on player health = 0
         if (area is Bullet bullet)
         {
-            Console.WriteLine("hit!");
             _health--;
             bullet.QueueFree();
 
             if (_health == 0)
             {
-                Console.WriteLine("player is dead!");
+                EmitSignal(nameof(Death));
             }
         }
     }

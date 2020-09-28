@@ -15,4 +15,5 @@ autostart = true
 [node name="PlayerStartPosition" type="Position2D" parent="."]
 position = Vector2( 300, 800 )
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="OnEnemySpawnTimerTimeout"]
+[connection signal="Death" from="Player" to="." method="OnPlayerDeath"]
 [connection signal="area_entered" from="Player" to="Player" method="OnPlayerAreaEntered"]

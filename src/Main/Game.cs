@@ -26,4 +26,9 @@ public class Game : Node
         Enemy enemy = _enemyScene.Instance() as Enemy;
         AddChild(enemy);
     }
+
+    public void OnPlayerDeath()
+    {
+        Console.WriteLine("game over!");
+    }
 }
