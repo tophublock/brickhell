@@ -7,6 +7,8 @@ public class Player : Area2D
     private int _health = 5;
     private int _speed = 450;
     private int _padding = 30;
+    private double _shootCountdownSec = 0.0;
+    private double _shootDelaySec = 0.5;
     private Vector2 _size;
     private Vector2 _screenSize;
     private PackedScene _bulletScene;
@@ -16,6 +18,7 @@ public class Player : Area2D
         _screenSize = GetViewport().Size;
         _size = GetNode<Sprite>("Sprite").Texture.GetSize();
         _bulletScene = ResourceLoader.Load("res://src/Objects/PlayerBullet.tscn") as PackedScene;
+        _shootCountdownSec = _shootDelaySec;
     }
 
     public override void _Process(float delta)
@@ -42,9 +45,11 @@ public class Player : Area2D
             velocity.x += _speed * delta;
         }
 
-        if (Input.IsKeyPressed((int)KeyList.Space))
+        // Check if Player can shoot and is pressing space
+        if (_shootCountdownSec <= 0.0 && Input.IsKeyPressed((int)KeyList.Space))
         {
             shoot();
+            _shootCountdownSec = _shootDelaySec;
         }
 
         Vector2 position = Position;
@@ -53,6 +58,7 @@ public class Player : Area2D
             x: Mathf.Clamp(position.x, _padding, _screenSize.x - _padding),
             y: Mathf.Clamp(position.y, _padding, _screenSize.y - _padding)
         );
+        _shootCountdownSec -= delta;
     }
 
     private void shoot()
