@@ -9,7 +9,8 @@ extents = Vector2( 32, 32 )
 
 [node name="Enemy" type="Area2D"]
 scale = Vector2( 0.75, 0.75 )
-collision_mask = 2147483648
+collision_layer = 2
+collision_mask = 2147483649
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -17,19 +18,29 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 position = Vector2( -1.90735e-06, 1.90735e-06 )
 scale = Vector2( 3.2, 3.2 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="BulletEmitter" type="Node2D" parent="."]
 scale = Vector2( 0.5, 1.5 )
 script = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="BulletTimer" type="Timer" parent="BulletEmitter"]
 wait_time = 0.4
 autostart = true
 
 [node name="MoveTween" type="Tween" parent="."]
+[connection signal="area_entered" from="." to="." method="OnEnemyAreaEntered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="OnVisibilityNotifier2DScreenExited"]
 [connection signal="timeout" from="BulletEmitter/BulletTimer" to="BulletEmitter" method="OnBulletTimerTimeout"]
