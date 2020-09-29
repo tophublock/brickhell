@@ -8,6 +8,8 @@ public class Player : Area2D
     public delegate void Hit();
     [Signal]
     public delegate void Death();
+    [Signal]
+    public delegate void HitHealthPowerUp();
     private int _health = 5;
     private int _maxHealth = 5;
     private int _speed = 450;
@@ -109,5 +111,11 @@ public class Player : Area2D
     public void SetShootDelay(double seconds)
     {
         _shootDelaySec = Math.Max(seconds, _minShootDelaySec);
+    }
+
+    public void AddHealth()
+    {
+        EmitSignal(nameof(HitHealthPowerUp));
+        _health++;
     }
 }

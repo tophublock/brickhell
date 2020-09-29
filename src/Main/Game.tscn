@@ -24,5 +24,6 @@ autostart = true
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="OnEnemySpawnTimerTimeout"]
 [connection signal="Death" from="Player" to="." method="OnPlayerDeath"]
 [connection signal="Hit" from="Player" to="." method="OnPlayerHit"]
+[connection signal="HitHealthPowerUp" from="Player" to="." method="OnPlayerHitHealthPowerUp"]
 [connection signal="area_entered" from="Player" to="Player" method="OnPlayerAreaEntered"]
 [connection signal="timeout" from="PowerUpSpawnTimer" to="." method="OnPowerUpSpawnTimerTimeout"]

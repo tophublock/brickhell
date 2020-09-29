@@ -14,7 +14,7 @@ public class Game : Node
     public override void _Ready()
     {
         _enemyScene = ResourceLoader.Load("res://src/Actors/Enemy.tscn") as PackedScene;
-        _powerUpScene = ResourceLoader.Load("res://src/Objects/PowerUps/SpeedPowerUp.tscn") as PackedScene;
+        _powerUpScene = ResourceLoader.Load("res://src/Objects/PowerUps/HealthPowerUp.tscn") as PackedScene;
 
         _hud = GetNode<HUD>("HUD");
         _player = GetNode<Player>("Player");
@@ -53,7 +53,7 @@ public class Game : Node
 
     public void OnPowerUpSpawnTimerTimeout()
     {
-        SpeedPowerUp powerUp = _powerUpScene.Instance() as SpeedPowerUp;
+        PowerUp powerUp = _powerUpScene.Instance() as PowerUp;
         AddChild(powerUp);
     }
 
@@ -83,6 +83,11 @@ public class Game : Node
         // Stop spawning enemies
         var timer = GetNode<Timer>("EnemySpawnTimer");
         timer.Stop();
+    }
+
+    public void OnPlayerHitHealthPowerUp()
+    {
+        _hud.AddLife();
     }
 
     public void OnGameOverNewGame()

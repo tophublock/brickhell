@@ -12,10 +12,6 @@ public class HUD : NinePatchRect
         Start();
     }
 
-    public override void _Process(float delta)
-    {
-        
-    }
 
     public void Start()
     {
@@ -58,5 +54,11 @@ public class HUD : NinePatchRect
         lifeNode.QueueFree();
     }
 
-
+    // TODO: rename to health
+    public void AddLife()
+    {
+        var livesContainer = GetNode<BoxContainer>(_livesContainerPath);
+        var textureRect = CreateLifeTexture();
+        livesContainer.AddChild(textureRect);
+    }
 }

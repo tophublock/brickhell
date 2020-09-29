@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/Objects/PowerUps/PowerUp.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Objects/PowerUps/HealthPowerUp.cs" type="Script" id=2]
 
 [sub_resource type="StreamTexture" id=1]
 flags = 4
@@ -10,6 +11,7 @@ load_path = "res://.import/health.png-00457dc45e4c240f12819344f6504f87.stex"
 extents = Vector2( 11.5758, 11.142 )
 
 [node name="HealthPowerUp" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
 
 [node name="Sprite" parent="." index="0"]
 texture = SubResource( 1 )
