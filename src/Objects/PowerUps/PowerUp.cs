@@ -6,10 +6,9 @@ public abstract class PowerUp : Area2D
     public enum Type
     {
         Speed,
-        Life,
+        Health,
         Defense
     }
-
     private readonly int _speed = 40;
     private Vector2 _direction = Vector2.Down;
 
