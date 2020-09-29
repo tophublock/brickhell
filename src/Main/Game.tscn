@@ -17,6 +17,10 @@ autostart = true
 position = Vector2( 300, 800 )
 
 [node name="HUD" parent="." instance=ExtResource( 3 )]
+
+[node name="PowerUpSpawnTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="OnEnemySpawnTimerTimeout"]
 [connection signal="Death" from="Player" to="." method="OnPlayerDeath"]
 [connection signal="Hit" from="Player" to="." method="OnPlayerHit"]
