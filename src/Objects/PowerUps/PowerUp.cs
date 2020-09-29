@@ -43,8 +43,5 @@ public abstract class PowerUp : Area2D
         }
     }
 
-    public virtual void ApplyPowerUp(Player player)
-    {
-        // Override method
-    }
+    public abstract void ApplyPowerUp(Player player);
 }
