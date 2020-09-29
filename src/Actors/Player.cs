@@ -9,6 +9,7 @@ public class Player : Area2D
     [Signal]
     public delegate void Death();
     private int _health = 5;
+    private int _maxHealth = 5;
     private int _speed = 450;
     private int _padding = 30;
     private double _shootCountdownSec = 0.0;
@@ -22,7 +23,7 @@ public class Player : Area2D
         _screenSize = GetViewport().Size;
         _size = GetNode<Sprite>("Sprite").Texture.GetSize();
         _bulletScene = ResourceLoader.Load("res://src/Objects/PlayerBullet.tscn") as PackedScene;
-        _shootCountdownSec = _shootDelaySec;
+        Start();
     }
 
     public override void _Process(float delta)
@@ -63,6 +64,12 @@ public class Player : Area2D
             y: Mathf.Clamp(position.y, _padding, _screenSize.y - _padding)
         );
         _shootCountdownSec -= delta;
+    }
+
+    public void Start()
+    {
+        _shootCountdownSec = _shootDelaySec;
+        _health = _maxHealth;
     }
 
     private void Shoot()

@@ -28,6 +28,9 @@ public class Game : Node
 
         var timer = GetNode<Timer>("EnemySpawnTimer");
         timer.Start();
+
+        _player.Start();
+        _hud.Start();
     }
 
     public void OnEnemySpawnTimerTimeout()

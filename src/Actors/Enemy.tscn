@@ -39,7 +39,7 @@ __meta__ = {
 }
 
 [node name="BulletTimer" type="Timer" parent="BulletEmitter"]
-wait_time = 0.4
+wait_time = 0.5
 autostart = true
 
 [node name="MoveTween" type="Tween" parent="."]
