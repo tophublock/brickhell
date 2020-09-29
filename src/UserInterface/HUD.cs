@@ -54,7 +54,6 @@ public class HUD : NinePatchRect
         lifeNode.QueueFree();
     }
 
-    // TODO: rename to health
     public void AddLife()
     {
         var livesContainer = GetNode<BoxContainer>(_livesContainerPath);

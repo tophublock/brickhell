@@ -47,12 +47,14 @@ public class Game : Node
 
     public void OnEnemySpawnTimerTimeout()
     {
+        // TODO: pick a random enemy to spawn
         Enemy enemy = _enemyScene.Instance() as Enemy;
         AddChild(enemy);
     }
 
     public void OnPowerUpSpawnTimerTimeout()
     {
+        // TODO: pick a random power up to spawn
         PowerUp powerUp = _powerUpScene.Instance() as PowerUp;
         AddChild(powerUp);
     }
@@ -73,16 +75,25 @@ public class Game : Node
         gameOverNode.Connect("NewGame", this, "OnGameOverNewGame");
         gameOverNode.Connect("EndGame", this, "OnGameOverEndGame");
 
-        // Remove all enemies from screen, let bullets stay on
+        // Remove all enemies and power ups from screen, let bullets stay on
         var enemies = GetTree().GetNodesInGroup("Enemy");
-        foreach (Enemy enemy in enemies)
+        foreach (Enemy e in enemies)
         {
-            enemy.QueueFree();
+            e.QueueFree();
         }
 
-        // Stop spawning enemies
-        var timer = GetNode<Timer>("EnemySpawnTimer");
-        timer.Stop();
+        var powerUps = GetTree().GetNodesInGroup("PowerUp");
+        foreach (PowerUp u in powerUps)
+        {
+            u.QueueFree();
+        }
+
+        // Stop spawning enemies and power ups
+        var enemyTimer = GetNode<Timer>("EnemySpawnTimer");
+        enemyTimer.Stop();
+
+        var powerUpTimer = GetNode<Timer>("PowerUpSpawnTimer");
+        powerUpTimer.Stop();
     }
 
     public void OnPlayerHitHealthPowerUp()
