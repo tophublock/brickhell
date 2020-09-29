@@ -25,3 +25,4 @@ autostart = true
 [connection signal="Death" from="Player" to="." method="OnPlayerDeath"]
 [connection signal="Hit" from="Player" to="." method="OnPlayerHit"]
 [connection signal="area_entered" from="Player" to="Player" method="OnPlayerAreaEntered"]
+[connection signal="timeout" from="PowerUpSpawnTimer" to="." method="OnPowerUpSpawnTimerTimeout"]

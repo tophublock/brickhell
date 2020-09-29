@@ -5,8 +5,8 @@ public class Enemy : Area2D
 {
 
     private int _health = 2;
-    private int _speed = 50;
-    private Vector2 _direction =  new Vector2(0, 1);
+    private readonly int _speed = 50;
+    private Vector2 _direction = Vector2.Down;
 
     public override void _Ready()
     {
