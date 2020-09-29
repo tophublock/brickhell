@@ -99,4 +99,14 @@ public class Player : Area2D
             }
         }
     }
+
+    public double GetShootDelay()
+    {
+        return _shootDelaySec;
+    }
+
+    public void SetShootDelay(double seconds)
+    {
+        _shootDelaySec = seconds;
+    }
 }
