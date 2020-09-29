@@ -14,6 +14,7 @@ public class Player : Area2D
     private int _padding = 30;
     private double _shootCountdownSec = 0.0;
     private double _shootDelaySec = 1.0;
+    private readonly double _minShootDelaySec = 0.1;
     private Vector2 _size;
     private Vector2 _screenSize;
     private PackedScene _bulletScene;
@@ -107,6 +108,6 @@ public class Player : Area2D
 
     public void SetShootDelay(double seconds)
     {
-        _shootDelaySec = seconds;
+        _shootDelaySec = Math.Max(seconds, _minShootDelaySec);
     }
 }
