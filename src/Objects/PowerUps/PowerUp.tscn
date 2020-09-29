@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/speed.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 10.2431, 15.7599 )
+extents = Vector2( 10.6448, 15.4317 )
 
 [node name="PowerUp" type="Area2D"]
 collision_layer = 16
