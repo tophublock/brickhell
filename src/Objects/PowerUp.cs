@@ -3,8 +3,14 @@ using System;
 
 public class PowerUp : Area2D
 {
+    public enum Type
+    {
+        Speed,
+        Life,
+        Defense
+    }
+
     private readonly int _speed = 40;
-    private readonly double _delayDecreaseSec = 0.1;
     private Vector2 _direction = Vector2.Down;
 
     public override void _Ready()
@@ -32,9 +38,13 @@ public class PowerUp : Area2D
     {
         if (area is Player player)
         {
-            double delay = player.GetShootDelay();
-            player.SetShootDelay(delay - _delayDecreaseSec);
+            ApplyPowerUp(player);
             QueueFree();
         }
+    }
+
+    public virtual void ApplyPowerUp(Player player)
+    {
+        // Override method
     }
 }
