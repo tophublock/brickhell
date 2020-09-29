@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class PowerUp : Area2D
+public abstract class PowerUp : Area2D
 {
     public enum Type
     {
