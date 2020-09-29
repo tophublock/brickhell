@@ -4,9 +4,10 @@ using System;
 public class Bullet : Area2D
 {
     private int _speed = 100;
+
     public override void _Ready()
     {
-        
+
     }
 
     public override void _Process(float delta)

@@ -4,12 +4,14 @@ using System;
 public class Game : Node
 {
 
+    private HUD _hud;
     private Player _player;
     private PackedScene _enemyScene;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
         _enemyScene = ResourceLoader.Load("res://src/Actors/Enemy.tscn") as PackedScene;
+        _hud = GetNode<HUD>("HUD");
         _player = GetNode<Player>("Player");
         Start();
     }
@@ -32,6 +34,11 @@ public class Game : Node
     {
         Enemy enemy = _enemyScene.Instance() as Enemy;
         AddChild(enemy);
+    }
+
+    public void OnPlayerHit()
+    {
+        _hud.RemoveLife();
     }
 
     public void OnPlayerDeath()

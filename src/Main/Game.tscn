@@ -19,4 +19,5 @@ position = Vector2( 300, 800 )
 [node name="HUD" parent="." instance=ExtResource( 3 )]
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="OnEnemySpawnTimerTimeout"]
 [connection signal="Death" from="Player" to="." method="OnPlayerDeath"]
+[connection signal="Hit" from="Player" to="." method="OnPlayerHit"]
 [connection signal="area_entered" from="Player" to="Player" method="OnPlayerAreaEntered"]

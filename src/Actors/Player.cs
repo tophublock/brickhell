@@ -5,6 +5,8 @@ public class Player : Area2D
 {
 
     [Signal]
+    public delegate void Hit();
+    [Signal]
     public delegate void Death();
     private int _health = 5;
     private int _speed = 450;
@@ -78,12 +80,11 @@ public class Player : Area2D
 
     public void OnPlayerAreaEntered(Area2D area)
     {
-        // TODO: delete bullet on hit
-        // TODO: end game on player health = 0
         if (area is Bullet bullet)
         {
             _health--;
             bullet.QueueFree();
+            EmitSignal(nameof(Hit));
 
             if (_health == 0)
             {
