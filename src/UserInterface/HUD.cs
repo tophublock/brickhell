@@ -19,7 +19,6 @@ public class HUD : NinePatchRect
 
     public void Start()
     {
-        Console.WriteLine("restarting");
         var livesContainer = GetNode<BoxContainer>(_livesContainerPath);
         if (livesContainer.GetChildren().Count > 0)
         {
@@ -31,7 +30,6 @@ public class HUD : NinePatchRect
 
         for (int i = 0; i < _maxLives; i++)
         {
-            Console.WriteLine("adding life");
             var textureRect = CreateLifeTexture();
             livesContainer.AddChild(textureRect);
         }

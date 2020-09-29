@@ -4,9 +4,11 @@ using System;
 public class Game : Node
 {
 
+    private readonly int _waitTimeMs = 250;
     private HUD _hud;
     private Player _player;
     private PackedScene _enemyScene;
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
@@ -23,6 +25,13 @@ public class Game : Node
 
     private void Start()
     {
+        // Remove any remaining bullets
+        var bullets = GetTree().GetNodesInGroup("Bullet");
+        foreach (Bullet bullet in bullets)
+        {
+            bullet.QueueFree();
+        }
+
         var startPosition = GetNode<Position2D>("PlayerStartPosition");
         _player.Position = startPosition.Position;
 
@@ -55,7 +64,7 @@ public class Game : Node
         gameOverNode.Connect("NewGame", this, "OnGameOverNewGame");
         gameOverNode.Connect("EndGame", this, "OnGameOverEndGame");
 
-        // Remove all enemies from screen
+        // Remove all enemies from screen, let bullets stay on
         var enemies = GetTree().GetNodesInGroup("Enemy");
         foreach (Enemy enemy in enemies)
         {
