@@ -4,13 +4,13 @@ using System;
 public class WaveBulletEmitter : BulletEmitter 
 {
     private int _bulletsPerWave = 20;
-    private float _delayBtwWaves = 2.5f;
+    private float _delayBtwnShoot = 2.5f;
 
     public override void _Ready()
     {
         base._Ready();
         var timer = GetNode<Timer>("BulletTimer");
-        timer.WaitTime = _delayBtwWaves;
+        timer.WaitTime = _delayBtwnShoot;
     }
 
     public override void Shoot()
