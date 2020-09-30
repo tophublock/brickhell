@@ -37,6 +37,7 @@ public abstract class PowerUp : Area2D
     {
         if (area is Player player)
         {
+            player.PlayPickUpSound();
             ApplyPowerUp(player);
             QueueFree();
         }

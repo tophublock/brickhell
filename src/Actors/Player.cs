@@ -22,6 +22,7 @@ public class Player : Area2D
     private Vector2 _size;
     private Vector2 _screenSize;
     private AudioStreamPlayer2D _laserSound;
+    private AudioStreamPlayer2D _pickUpSound;
     private PackedScene _bulletScene;
 
     public override void _Ready()
@@ -29,6 +30,7 @@ public class Player : Area2D
         _screenSize = GetViewport().Size;
         _size = GetNode<Sprite>("Sprite").Texture.GetSize();
         _laserSound = GetNode<AudioStreamPlayer2D>("LaserSound");
+        _pickUpSound = GetNode<AudioStreamPlayer2D>("PickUpSound");
         _bulletScene = ResourceLoader.Load("res://src/Objects/PlayerBullet.tscn") as PackedScene;
         Start();
     }
@@ -106,6 +108,11 @@ public class Player : Area2D
                 EmitSignal(nameof(Death));
             }
         }
+    }
+
+    public void PlayPickUpSound()
+    {
+        _pickUpSound.Play();
     }
 
     public double GetShootDelay()

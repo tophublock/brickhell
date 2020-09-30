@@ -41,8 +41,11 @@ public class Game : Node
         var startPosition = GetNode<Position2D>("PlayerStartPosition");
         _player.Position = startPosition.Position;
 
-        var timer = GetNode<Timer>("EnemySpawnTimer");
-        timer.Start();
+        var enemyTimer = GetNode<Timer>("EnemySpawnTimer");
+        enemyTimer.Start();
+
+        var powerUpTimer = GetNode<Timer>("PowerUpSpawnTimer");
+        powerUpTimer.Start();
 
         _player.Start();
         _hud.Start();
