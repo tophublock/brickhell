@@ -8,18 +8,24 @@ public class Game : Node
     private Random rnd = new Random();
     private HUD _hud;
     private Player _player;
-    private PackedScene _enemyScene;
+    private PackedScene[] _enemyScenes = new PackedScene[2];
     private PackedScene[] _powerUpScenes = new PackedScene[3];
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        _enemyScene = ResourceLoader.Load("res://src/Actors/Enemies/WaveEnemy.tscn") as PackedScene;
+        LoadEnemyScenes();
         LoadPowerUpScenes();
 
         _hud = GetNode<HUD>("HUD");
         _player = GetNode<Player>("Player");
         Start();
+    }
+
+    private void LoadEnemyScenes()
+    {
+        _enemyScenes[0] = ResourceLoader.Load("res://src/Actors/Enemies/Enemy.tscn") as PackedScene;
+        _enemyScenes[1] = ResourceLoader.Load("res://src/Actors/Enemies/WaveEnemy.tscn") as PackedScene;
     }
 
     private void LoadPowerUpScenes()
@@ -54,7 +60,8 @@ public class Game : Node
     public void OnEnemySpawnTimerTimeout()
     {
         // TODO: pick a random enemy to spawn
-        Enemy enemy = _enemyScene.Instance() as Enemy;
+        PackedScene scene = _enemyScenes[rnd.Next(0, _enemyScenes.Length)];
+        Enemy enemy = scene.Instance() as Enemy;
         AddChild(enemy);
     }
 
