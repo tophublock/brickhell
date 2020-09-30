@@ -5,25 +5,28 @@ public class Game : Node
 {
 
     private readonly int _waitTimeMs = 250;
+    private Random rnd = new Random();
     private HUD _hud;
     private Player _player;
     private PackedScene _enemyScene;
-    private PackedScene _powerUpScene;
+    private PackedScene[] _powerUpScenes = new PackedScene[3];
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
         _enemyScene = ResourceLoader.Load("res://src/Actors/Enemy.tscn") as PackedScene;
-        _powerUpScene = ResourceLoader.Load("res://src/Objects/PowerUps/ShieldPowerUp.tscn") as PackedScene;
+        LoadPowerUpScenes();
 
         _hud = GetNode<HUD>("HUD");
         _player = GetNode<Player>("Player");
         Start();
     }
 
-    public override void _Process(float delta)
+    private void LoadPowerUpScenes()
     {
-
+        _powerUpScenes[0] = ResourceLoader.Load("res://src/Objects/PowerUps/SpeedPowerUp.tscn") as PackedScene;
+        _powerUpScenes[1] = ResourceLoader.Load("res://src/Objects/PowerUps/HealthPowerUp.tscn") as PackedScene;
+        _powerUpScenes[2] = ResourceLoader.Load("res://src/Objects/PowerUps/ShieldPowerUp.tscn") as PackedScene;
     }
 
     private void Start()
@@ -52,10 +55,11 @@ public class Game : Node
         AddChild(enemy);
     }
 
+    // Spawn a random power up
     public void OnPowerUpSpawnTimerTimeout()
     {
-        // TODO: pick a random power up to spawn
-        PowerUp powerUp = _powerUpScene.Instance() as PowerUp;
+        PackedScene scene = _powerUpScenes[rnd.Next(0, _powerUpScenes.Length)];
+        PowerUp powerUp = scene.Instance() as PowerUp;
         AddChild(powerUp);
     }
 
