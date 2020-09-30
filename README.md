@@ -23,9 +23,10 @@ Coming soon
 
 ## Credit
 
-The assets used in this game came from free/open-sourced resources. Credit isn't required but I'd like to thank the creators for their kindness and efforts, as well as share where other developers can find resources for their own games. :)
+The assets used in this game came from free/open-sourced/cc-license resources. I'd like to thank the creators for their kindness and efforts, as well as share where other developers can find resources for their own games. :)
 
 The image assets used in the game (spaceships, bricks, etc) are from [Kenney](https://kenney.nl/).
 The font assets used in the game are from [Google](https://fonts.google.com/about).
+The sound effect assets used in the game (laser zap) are from [freesound](https://www.freesound.org) by [nsstudios](https://freesound.org/people/nsstudios/) under the [Creative Commons Attribution License](https://creativecommons.org/licenses/by/3.0/legalcode)
 
 And of course, the [Godot](https://godotengine.org/) engine is also open-sourced.

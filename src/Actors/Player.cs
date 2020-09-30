@@ -21,12 +21,14 @@ public class Player : Area2D
     private readonly double _minShootDelaySec = 0.1;
     private Vector2 _size;
     private Vector2 _screenSize;
+    private AudioStreamPlayer2D _laserSound;
     private PackedScene _bulletScene;
 
     public override void _Ready()
     {
         _screenSize = GetViewport().Size;
         _size = GetNode<Sprite>("Sprite").Texture.GetSize();
+        _laserSound = GetNode<AudioStreamPlayer2D>("LaserSound");
         _bulletScene = ResourceLoader.Load("res://src/Objects/PlayerBullet.tscn") as PackedScene;
         Start();
     }
@@ -88,6 +90,7 @@ public class Player : Area2D
         b.Position = position;
         // Make bullets part of the game environment
         GetParent().AddChild(b);
+        _laserSound.Play();
     }
 
     public void OnPlayerAreaEntered(Area2D area)
