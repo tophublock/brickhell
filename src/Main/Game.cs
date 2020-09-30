@@ -14,7 +14,7 @@ public class Game : Node
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        _enemyScene = ResourceLoader.Load("res://src/Actors/Enemies/Enemy.tscn") as PackedScene;
+        _enemyScene = ResourceLoader.Load("res://src/Actors/Enemies/WaveEnemy.tscn") as PackedScene;
         LoadPowerUpScenes();
 
         _hud = GetNode<HUD>("HUD");

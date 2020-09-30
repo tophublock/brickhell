@@ -3,6 +3,7 @@ using System;
 
 public class Bullet : Area2D
 {
+    public Vector2 Direction = Vector2.One;
     private int _speed = 100;
 
     public override void _Ready()
@@ -12,7 +13,7 @@ public class Bullet : Area2D
 
     public override void _Process(float delta)
     {
-        Vector2 velocity = new Vector2(_speed * delta, _speed * delta).Rotated(this.Rotation);
+        Vector2 velocity = new Vector2(_speed * delta * Direction.x, _speed * delta * Direction.y).Rotated(this.Rotation);
         this.Position += velocity;
     }
 

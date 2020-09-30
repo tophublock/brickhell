@@ -3,7 +3,8 @@ using System;
 
 public class BulletEmitter : Node2D
 {
-    private PackedScene _bulletScene;
+    protected float _rotationSpeed = 1.0f;
+    protected PackedScene _bulletScene;
 
     public override void _Ready()
     {
@@ -12,10 +13,10 @@ public class BulletEmitter : Node2D
 
     public override void _Process(float delta)
     {
-        Rotate((float)1 * delta);
+        Rotate((float)_rotationSpeed * delta);
     }
 
-    private void shoot()
+    public virtual void Shoot()
     {
         // TODO: Fix bullet distance from enemy center
         Area2D enemy = (Area2D)GetParent();
@@ -30,6 +31,6 @@ public class BulletEmitter : Node2D
 
     public void OnBulletTimerTimeout()
     {
-        shoot();
+        Shoot();
     }
 }
