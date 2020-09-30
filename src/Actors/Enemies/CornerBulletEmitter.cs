@@ -4,11 +4,11 @@ using System;
 public class CornerBulletEmitter: BulletEmitter 
 {
     private int _numCorners = 4;
-    private float _delayBtwnShoot = 0.75f;
+    private float _delayBtwnShoot = 1f;
 
     public override void _Ready()
     {
-        base._Ready();
+        _bulletScene = ResourceLoader.Load("res://src/Objects/Bullets/CornerBullet.tscn") as PackedScene;
         var timer = GetNode<Timer>("BulletTimer");
         timer.WaitTime = _delayBtwnShoot;
     }

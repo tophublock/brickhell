@@ -31,7 +31,7 @@ public class Player : Area2D
         _size = GetNode<Sprite>("Sprite").Texture.GetSize();
         _laserSound = GetNode<AudioStreamPlayer2D>("LaserSound");
         _pickUpSound = GetNode<AudioStreamPlayer2D>("PickUpSound");
-        _bulletScene = ResourceLoader.Load("res://src/Objects/PlayerBullet.tscn") as PackedScene;
+        _bulletScene = ResourceLoader.Load("res://src/Objects/Bullets/PlayerBullet.tscn") as PackedScene;
         Start();
     }
 

@@ -4,11 +4,11 @@ using System;
 public class WaveBulletEmitter : BulletEmitter 
 {
     private int _bulletsPerWave = 20;
-    private float _delayBtwnShoot = 2.5f;
+    private float _delayBtwnShoot = 3.0f;
 
     public override void _Ready()
     {
-        base._Ready();
+        _bulletScene = ResourceLoader.Load("res://src/Objects/Bullets/WaveBullet.tscn") as PackedScene;
         var timer = GetNode<Timer>("BulletTimer");
         timer.WaitTime = _delayBtwnShoot;
     }

@@ -8,7 +8,7 @@ public class BulletEmitter : Node2D
 
     public override void _Ready()
     {
-        _bulletScene = ResourceLoader.Load("res://src/Objects/Bullet.tscn") as PackedScene;
+        _bulletScene = ResourceLoader.Load("res://src/Objects/Bullets/Bullet.tscn") as PackedScene;
     }
 
     public override void _Process(float delta)
