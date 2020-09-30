@@ -7,7 +7,7 @@ public abstract class PowerUp : Area2D
     {
         Speed,
         Health,
-        Defense
+        Shield 
     }
     private readonly int _speed = 40;
     private Vector2 _direction = Vector2.Down;

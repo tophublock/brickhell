@@ -10,10 +10,12 @@ public class Player : Area2D
     public delegate void Death();
     [Signal]
     public delegate void HitHealthPowerUp();
+    private bool _shieldOn = false;
     private int _health = 5;
     private int _maxHealth = 5;
     private int _speed = 450;
     private int _padding = 30;
+    private float _shieldSec = 3.0f;
     private double _shootCountdownSec = 0.0;
     private double _shootDelaySec = 1.0;
     private readonly double _minShootDelaySec = 0.1;
@@ -90,7 +92,7 @@ public class Player : Area2D
 
     public void OnPlayerAreaEntered(Area2D area)
     {
-        if (area is Bullet bullet)
+        if (!_shieldOn && area is Bullet bullet)
         {
             _health--;
             bullet.QueueFree();
@@ -117,5 +119,22 @@ public class Player : Area2D
     {
         EmitSignal(nameof(HitHealthPowerUp));
         _health++;
+    }
+
+    public void TurnOnShield()
+    {
+        var timer = new Timer();
+        timer.OneShot = true;
+        timer.WaitTime = _shieldSec;
+        timer.Connect("timeout", this, nameof(TurnOffShield));
+        AddChild(timer);
+
+        _shieldOn = true;
+        timer.Start();
+    }
+
+    private void TurnOffShield()
+    {
+        _shieldOn = false;
     }
 }
