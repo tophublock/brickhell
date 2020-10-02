@@ -3,6 +3,7 @@ using System;
 
 public class BulletEmitter : Node2D
 {
+    protected bool _rotateSelf = true;
     protected float _rotationSpeed = 1.0f;
     protected PackedScene _bulletScene;
 
@@ -13,7 +14,10 @@ public class BulletEmitter : Node2D
 
     public override void _Process(float delta)
     {
-        Rotate((float)_rotationSpeed * delta);
+        if (_rotateSelf)
+        {
+            Rotate((float)_rotationSpeed * delta);
+        }
     }
 
     public virtual void Shoot()

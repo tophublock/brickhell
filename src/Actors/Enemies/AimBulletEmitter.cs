@@ -10,15 +10,17 @@ public class AimBulletEmitter : BulletEmitter
         _bulletScene = ResourceLoader.Load("res://src/Objects/Bullets/AimBullet.tscn") as PackedScene;
         var timer = GetNode<Timer>("BulletTimer");
         timer.WaitTime = _delayBtwnShoot;
+        _rotateSelf = false;
     }
 
     public override void Shoot()
     {
         Area2D enemy = (Area2D)GetParent();
-        Area2D player = GetTree().Root.GetNode<Player>("Player");
+        Player player = GetTree().Root.GetNode<Player>("Game/Player");
 
-        Bullet b = (Bullet)_bulletScene.Instance();
-        b.Rotation = enemy.Position.AngleTo(player.Position);
+        AimBullet b = (AimBullet)_bulletScene.Instance();
+        b.Position = enemy.Position;
+        b.Direction = (player.Position - enemy.Position).Normalized();
         enemy.GetParent().AddChild(b);
     }
 }
