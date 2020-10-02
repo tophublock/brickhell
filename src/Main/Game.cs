@@ -12,7 +12,7 @@ public class Game : Node
     private Random rnd = new Random();
     private HUD _hud;
     private Player _player;
-    private PackedScene[] _enemyScenes = new PackedScene[3];
+    private PackedScene[] _enemyScenes = new PackedScene[4];
     private PackedScene[] _powerUpScenes = new PackedScene[3];
 
     // Called when the node enters the scene tree for the first time.
@@ -28,9 +28,11 @@ public class Game : Node
 
     private void LoadEnemyScenes()
     {
+        // TODO: make this dynamic
         _enemyScenes[0] = ResourceLoader.Load("res://src/Actors/Enemies/Enemy.tscn") as PackedScene;
         _enemyScenes[1] = ResourceLoader.Load("res://src/Actors/Enemies/WaveEnemy.tscn") as PackedScene;
         _enemyScenes[2] = ResourceLoader.Load("res://src/Actors/Enemies/CornerEnemy.tscn") as PackedScene;
+        _enemyScenes[3] = ResourceLoader.Load("res://src/Actors/Enemies/AimEnemy.tscn") as PackedScene;
     }
 
     private void LoadPowerUpScenes()
