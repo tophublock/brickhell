@@ -4,7 +4,7 @@ using System;
 public class Bullet : Area2D
 {
     public Vector2 Direction = Vector2.One;
-    private int _speed = 100;
+    protected int _speed = 100;
 
     public override void _Ready()
     {
