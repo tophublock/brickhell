@@ -6,7 +6,11 @@ I followed this helpful [example](https://github.com/erdavids/Bullet-Hell-Tutori
 
 ## Image Previews
 
-Coming soon
+![alt text](https://github.com/aim4/brickhell/blob/master/previews/main_menu.png "BrickHell preview, main menu")
+
+![alt text](https://github.com/aim4/brickhell/blob/master/previews/in_game.png "BrickHell preview, in game")
+
+![alt text](https://github.com/aim4/brickhell/blob/master/previews/game_over.png "BrickHell preview, game over")
 
 ## Key Takeaways
 
