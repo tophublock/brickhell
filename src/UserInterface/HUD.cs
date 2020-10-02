@@ -48,16 +48,21 @@ public class HUD : NinePatchRect
         return textureRect;
     }
 
-    public void RemoveLife()
+    // TODO: sometimes shows more lives than we have when player dies
+    public void RemoveLife(int currLives)
     {
         var lives = _livesContainer.GetChildren();
+        int numLives = lives.Count;
         if (lives.Count == 0)
         {
             return;
         }
 
-        var lifeNode = (Node)lives[0];
-        lifeNode.QueueFree();
+        for (int i = 0; i < (numLives - currLives); i++)
+        {
+            var lifeNode = (Node)lives[0];
+            lifeNode.QueueFree();
+        }
     }
 
     public void AddLife()

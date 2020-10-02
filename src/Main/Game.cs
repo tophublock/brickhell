@@ -105,7 +105,7 @@ public class Game : Node
 
     public void OnPlayerHit()
     {
-        _hud.RemoveLife();
+        _hud.RemoveLife(_player.Health);
     }
 
     public void OnPlayerDeath()
