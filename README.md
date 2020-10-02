@@ -22,6 +22,7 @@ I followed this helpful [example](https://github.com/erdavids/Bullet-Hell-Tutori
 - Collision layers and masks
 - Better understanding of creating UIs with Control Nodes
 - Project structure and organization
+- Scene/class inheritance (enemy, bullet)
 
 ## Credit
 
