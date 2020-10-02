@@ -4,6 +4,7 @@ using System;
 public class Game : Node
 {
 
+    private int _score = 0;
     private readonly int _waitTimeMs = 250;
     private Random rnd = new Random();
     private HUD _hud;
@@ -54,6 +55,7 @@ public class Game : Node
         var powerUpTimer = GetNode<Timer>("PowerUpSpawnTimer");
         powerUpTimer.Start();
 
+        _score = 0;
         _player.Start();
         _hud.Start();
     }

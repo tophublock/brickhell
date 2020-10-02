@@ -6,6 +6,9 @@ public class HUD : NinePatchRect
     private int _maxLives = 5;
     private int _lifeSize = 30;
     private string _livesContainerPath = "LivesMainContainer/HBoxContainer/LivesImageContainer";
+    private string _scorePath = "ScoreMainContainer/HBoxContainer/Score";
+    private Label _scoreLabel;
+    private BoxContainer _livesContainer;
 
     public override void _Ready()
     {
@@ -15,10 +18,13 @@ public class HUD : NinePatchRect
 
     public void Start()
     {
-        var livesContainer = GetNode<BoxContainer>(_livesContainerPath);
-        if (livesContainer.GetChildren().Count > 0)
+        _scoreLabel = GetNode<Label>(_scorePath);
+        _scoreLabel.Text = (0).ToString();
+
+        _livesContainer = GetNode<BoxContainer>(_livesContainerPath);
+        if (_livesContainer.GetChildren().Count > 0)
         {
-            foreach (Node child in livesContainer.GetChildren())
+            foreach (Node child in _livesContainer.GetChildren())
             {
                 child.QueueFree();
             }
@@ -27,7 +33,7 @@ public class HUD : NinePatchRect
         for (int i = 0; i < _maxLives; i++)
         {
             var textureRect = CreateLifeTexture();
-            livesContainer.AddChild(textureRect);
+            _livesContainer.AddChild(textureRect);
         }
     }
 
@@ -44,7 +50,7 @@ public class HUD : NinePatchRect
 
     public void RemoveLife()
     {
-        var lives = GetNode<BoxContainer>(_livesContainerPath).GetChildren();
+        var lives = _livesContainer.GetChildren();
         if (lives.Count == 0)
         {
             return;
@@ -56,8 +62,12 @@ public class HUD : NinePatchRect
 
     public void AddLife()
     {
-        var livesContainer = GetNode<BoxContainer>(_livesContainerPath);
         var textureRect = CreateLifeTexture();
-        livesContainer.AddChild(textureRect);
+        _livesContainer.AddChild(textureRect);
+    }
+
+    public void UpdateScore(int score)
+    {
+        _scoreLabel.Text = score.ToString();
     }
 }
