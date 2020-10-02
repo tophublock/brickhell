@@ -47,28 +47,50 @@ margin_right = 54.0
 margin_bottom = 28.0
 rect_min_size = Vector2( 10, 0 )
 
-[node name="ScoreMainContainer" type="CenterContainer" parent="."]
+[node name="GameStatsContainer" type="CenterContainer" parent="."]
 margin_left = 5.0
+margin_top = 5.0
 margin_right = 74.0
 margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ScoreMainContainer"]
-margin_top = 10.0
+[node name="VBoxContainer" type="VBoxContainer" parent="GameStatsContainer"]
 margin_right = 74.0
-margin_bottom = 29.0
+margin_bottom = 42.0
 
-[node name="ScoreLabel" type="Label" parent="ScoreMainContainer/HBoxContainer"]
+[node name="ScoreContainer" type="HBoxContainer" parent="GameStatsContainer/VBoxContainer"]
+margin_right = 74.0
+margin_bottom = 19.0
+
+[node name="ScoreLabel" type="Label" parent="GameStatsContainer/VBoxContainer/ScoreContainer"]
 margin_right = 60.0
 margin_bottom = 19.0
 custom_fonts/font = SubResource( 2 )
 text = "Score:"
 
-[node name="Score" type="Label" parent="ScoreMainContainer/HBoxContainer"]
+[node name="Score" type="Label" parent="GameStatsContainer/VBoxContainer/ScoreContainer"]
 margin_left = 64.0
 margin_right = 74.0
 margin_bottom = 19.0
 custom_fonts/font = SubResource( 2 )
 text = "0"
+
+[node name="LevelContainer" type="HBoxContainer" parent="GameStatsContainer/VBoxContainer"]
+margin_top = 23.0
+margin_right = 74.0
+margin_bottom = 42.0
+
+[node name="LevelLabel" type="Label" parent="GameStatsContainer/VBoxContainer/LevelContainer"]
+margin_right = 60.0
+margin_bottom = 19.0
+custom_fonts/font = SubResource( 2 )
+text = "Level:"
+
+[node name="Level" type="Label" parent="GameStatsContainer/VBoxContainer/LevelContainer"]
+margin_left = 64.0
+margin_right = 74.0
+margin_bottom = 19.0
+custom_fonts/font = SubResource( 2 )
+text = "1"

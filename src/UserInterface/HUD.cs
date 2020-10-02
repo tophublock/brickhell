@@ -6,7 +6,9 @@ public class HUD : NinePatchRect
     private int _maxLives = 5;
     private int _lifeSize = 30;
     private string _livesContainerPath = "LivesMainContainer/HBoxContainer/LivesImageContainer";
-    private string _scorePath = "ScoreMainContainer/HBoxContainer/Score";
+    private string _levelPath = "GameStatsContainer/VBoxContainer/LevelContainer/Level";
+    private string _scorePath = "GameStatsContainer/VBoxContainer/ScoreContainer/Score";
+    private Label _levelLabel;
     private Label _scoreLabel;
     private BoxContainer _livesContainer;
 
@@ -18,8 +20,11 @@ public class HUD : NinePatchRect
 
     public void Start()
     {
+        _levelLabel = GetNode<Label>(_levelPath);
+        _levelLabel.Text = (1).ToString();
+
         _scoreLabel = GetNode<Label>(_scorePath);
-        _scoreLabel.Text = (5).ToString();
+        _scoreLabel.Text = (0).ToString();
 
         _livesContainer = GetNode<BoxContainer>(_livesContainerPath);
         if (_livesContainer.GetChildren().Count > 0)
@@ -74,5 +79,10 @@ public class HUD : NinePatchRect
     public void UpdateScore(int score)
     {
         _scoreLabel.Text = score.ToString();
+    }
+
+    public void UpdateLevel(int level)
+    {
+        _levelLabel.Text = level.ToString();
     }
 }

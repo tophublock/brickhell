@@ -5,8 +5,8 @@ public class Game : Node
 {
 
     private readonly float _minEnemySpawnTime = 0.5f;
-    private int _level = 1;
-    private int _score = 5;
+    private int _level;
+    private int _score;
     private float _enemySpawnTime = 4f;
     private float _spawnTimeDecreasePerc = 0.1f;
     private Random rnd = new Random();
@@ -59,7 +59,8 @@ public class Game : Node
         var powerUpTimer = GetNode<Timer>("PowerUpSpawnTimer");
         powerUpTimer.Start();
 
-        _score = 5;
+        _score = 0;
+        _level = 1;
         _player.Start();
         _hud.Start();
     }
@@ -76,16 +77,19 @@ public class Game : Node
     private void UpdateScore()
     {
         _score++;
+        _hud.UpdateScore(_score);
+
         if (_score % 10 == 0)
         {
             IncreaseDifficulty();
         }
-        _hud.UpdateScore(_score);
     }
 
     private void IncreaseDifficulty()
     {
         _level++;
+        _hud.UpdateLevel(_level);
+
         if (_enemySpawnTime > _minEnemySpawnTime)
         {
             _enemySpawnTime -= _enemySpawnTime * _spawnTimeDecreasePerc;
