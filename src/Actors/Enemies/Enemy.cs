@@ -3,7 +3,8 @@ using System;
 
 public class Enemy : Area2D
 {
-
+    [Signal]
+    public delegate void Death();
     private int _health = 2;
     private readonly int _speed = 50;
     private Vector2 _direction = Vector2.Down;
@@ -55,6 +56,7 @@ public class Enemy : Area2D
 
             if (_health == 0)
             {
+                EmitSignal(nameof(Death));
                 QueueFree();
             }
         }

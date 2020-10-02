@@ -65,7 +65,14 @@ public class Game : Node
         // TODO: pick a random enemy to spawn
         PackedScene scene = _enemyScenes[rnd.Next(0, _enemyScenes.Length)];
         Enemy enemy = scene.Instance() as Enemy;
+        enemy.Connect("Death", this, nameof(UpdateScore));
         AddChild(enemy);
+    }
+
+    private void UpdateScore()
+    {
+        _score++;
+        _hud.UpdateScore(_score);
     }
 
     // Spawn a random power up
