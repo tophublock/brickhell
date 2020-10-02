@@ -4,8 +4,11 @@ using System;
 public class Game : Node
 {
 
-    private int _score = 0;
-    private readonly int _waitTimeMs = 250;
+    private readonly float _minEnemySpawnTime = 0.5f;
+    private int _level = 1;
+    private int _score = 5;
+    private float _enemySpawnTime = 4f;
+    private float _spawnTimeDecreasePerc = 0.1f;
     private Random rnd = new Random();
     private HUD _hud;
     private Player _player;
@@ -50,12 +53,13 @@ public class Game : Node
         _player.Position = startPosition.Position;
 
         var enemyTimer = GetNode<Timer>("EnemySpawnTimer");
+        enemyTimer.WaitTime = _enemySpawnTime;
         enemyTimer.Start();
 
         var powerUpTimer = GetNode<Timer>("PowerUpSpawnTimer");
         powerUpTimer.Start();
 
-        _score = 0;
+        _score = 5;
         _player.Start();
         _hud.Start();
     }
@@ -72,7 +76,23 @@ public class Game : Node
     private void UpdateScore()
     {
         _score++;
+        if (_score % 10 == 0)
+        {
+            IncreaseDifficulty();
+        }
         _hud.UpdateScore(_score);
+    }
+
+    private void IncreaseDifficulty()
+    {
+        _level++;
+        if (_enemySpawnTime > _minEnemySpawnTime)
+        {
+            _enemySpawnTime -= _enemySpawnTime * _spawnTimeDecreasePerc;
+            var enemyTimer = GetNode<Timer>("EnemySpawnTimer");
+            enemyTimer.WaitTime = _enemySpawnTime;
+            enemyTimer.Start();
+        }
     }
 
     // Spawn a random power up

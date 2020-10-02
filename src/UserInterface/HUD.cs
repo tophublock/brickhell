@@ -19,7 +19,7 @@ public class HUD : NinePatchRect
     public void Start()
     {
         _scoreLabel = GetNode<Label>(_scorePath);
-        _scoreLabel.Text = (0).ToString();
+        _scoreLabel.Text = (5).ToString();
 
         _livesContainer = GetNode<BoxContainer>(_livesContainerPath);
         if (_livesContainer.GetChildren().Count > 0)
