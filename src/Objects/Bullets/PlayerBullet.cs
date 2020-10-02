@@ -3,13 +3,8 @@ using System;
 
 public class PlayerBullet : Area2D
 {
-    private int _speed = 100;
+    private int _speed = 200;
     private Vector2 _direction = Vector2.Up;
-
-    public override void _Ready()
-    {
-        
-    }
 
     public override void _Process(float delta)
     {
