@@ -12,4 +12,9 @@ public class MainMenu : CenterContainer
         _startButton = GetNode<Button>(_buttonContainerPath + "Start");
         _quitButton = GetNode<Button>(_buttonContainerPath + "Quit");
     }
+
+    public void OnQuitPressed()
+    {
+        GetTree().Quit();
+    }
 }
