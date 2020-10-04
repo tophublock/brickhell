@@ -23,6 +23,7 @@ config/icon="res://icon.png"
 
 window/size/width=600
 window/size/height=900
+window/size/resizable=false
 window/stretch/aspect="keep"
 
 [input]
