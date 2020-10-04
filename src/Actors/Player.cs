@@ -21,6 +21,7 @@ public class Player : Area2D
     private readonly double _minShootDelaySec = 0.1;
     private Vector2 _size;
     private Vector2 _screenSize;
+    private Sprite _shield;
     private AudioStreamPlayer2D _laserSound;
     private AudioStreamPlayer2D _pickUpSound;
     private PackedScene _bulletScene;
@@ -28,7 +29,8 @@ public class Player : Area2D
     public override void _Ready()
     {
         _screenSize = GetViewport().Size;
-        _size = GetNode<Sprite>("Sprite").Texture.GetSize();
+        _size = GetNode<Sprite>("PlayerSprite").Texture.GetSize();
+        _shield = GetNode<Sprite>("Shield");
         _laserSound = GetNode<AudioStreamPlayer2D>("LaserSound");
         _pickUpSound = GetNode<AudioStreamPlayer2D>("PickUpSound");
         _bulletScene = ResourceLoader.Load("res://src/Objects/Bullets/PlayerBullet.tscn") as PackedScene;
@@ -77,6 +79,7 @@ public class Player : Area2D
 
     public void Start()
     {
+        _shield.Hide();
         _shootCountdownSec = _shootDelaySec;
         Health = _startHealth;
     }
@@ -140,11 +143,13 @@ public class Player : Area2D
         AddChild(timer);
 
         _shieldOn = true;
+        _shield.Show();
         timer.Start();
     }
 
     private void TurnOffShield()
     {
         _shieldOn = false;
+        _shield.Hide();
     }
 }

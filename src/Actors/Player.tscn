@@ -1,16 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/player.png" type="Texture" id=1]
 [ext_resource path="res://src/Actors/Player.cs" type="Script" id=2]
 [ext_resource path="res://assets/laser_sound.wav" type="AudioStream" id=3]
 [ext_resource path="res://assets/blip.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/playershield.png" type="Texture" id=5]
 
 [node name="Player" type="Area2D"]
 scale = Vector2( 0.75, 0.75 )
 collision_mask = 7
 script = ExtResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="PlayerSprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true
@@ -24,3 +25,6 @@ stream = ExtResource( 3 )
 
 [node name="PickUpSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
+
+[node name="Shield" type="Sprite" parent="."]
+texture = ExtResource( 5 )
